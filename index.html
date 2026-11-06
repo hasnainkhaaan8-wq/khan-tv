@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827">
+<title>Khan TV — Live Channels</title>
+<style>
+:root{--bg:#0f1117;--panel:#191d27;--muted:#9aa4b2;--text:#f8fafc;--red:#ff3347;--line:#2a3040}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Arial, sans-serif}
+header{height:66px;display:flex;align-items:center;gap:22px;padding:0 5%;background:#151923;position:sticky;top:0;z-index:3;border-bottom:1px solid var(--line)}
+.logo{font-size:23px;font-weight:800;white-space:nowrap}.logo b{color:var(--red)}
+.search{flex:1;max-width:600px;margin:auto;display:flex}.search input{width:100%;padding:12px 16px;border:1px solid #343b4b;border-radius:22px 0 0 22px;background:#0e121a;color:white;outline:none}.search button{border:1px solid #343b4b;border-left:0;border-radius:0 22px 22px 0;background:#252b38;color:white;padding:0 18px}
+main{max-width:1200px;margin:auto;padding:24px 5% 50px}.hero{display:flex;justify-content:space-between;align-items:center;gap:15px;margin:4px 0 20px}.hero h1{font-size:26px;margin:0}.live{color:#ff5969;font-size:12px;font-weight:bold;letter-spacing:1px}
+.player{background:#05070b;border:1px solid var(--line);border-radius:16px;min-height:230px;display:grid;place-items:center;text-align:center;padding:28px;margin-bottom:28px}.player h2{margin:8px 0}.player p{color:var(--muted);max-width:500px;margin:4px auto 16px}.play{display:inline-block;background:var(--red);color:white;text-decoration:none;padding:11px 20px;border-radius:24px;font-weight:bold}
+.tabs{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 20px}.tab{border:0;background:#252b38;color:white;padding:9px 17px;border-radius:20px;cursor:pointer}.tab.active{background:white;color:#111827;font-weight:bold}
+h3{margin:22px 0 14px;font-size:19px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;overflow:hidden}.thumb{height:112px;display:grid;place-items:center;background:linear-gradient(135deg,#263246,#111827);font-size:30px;font-weight:800;letter-spacing:1px}.thumb.pk{background:linear-gradient(135deg,#075b40,#102c25)}.thumb.int{background:linear-gradient(135deg,#263b67,#171e34)}.info{padding:12px}.info strong{display:block;font-size:15px}.meta{color:var(--muted);font-size:12px;margin:3px 0 11px}.watch{display:block;text-align:center;text-decoration:none;background:#303849;color:white;border-radius:8px;padding:8px;font-weight:bold}.watch:hover{background:var(--red)}
+footer{color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding:20px 5%;text-align:center}
+.empty{color:var(--muted);padding:20px;display:none}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}header{padding:0 4%;gap:12px}.logo{font-size:20px}}
+@media(max-width:430px){header{height:auto;padding:12px 4%;flex-wrap:wrap}.search{order:2;flex-basis:100%;max-width:none}.hero h1{font-size:22px}.grid{gap:10px}.thumb{height:90px}.info{padding:10px}.player{min-height:205px}}
+</style>
+</head>
+<body>
+<header><div class="logo">📺 <b>KHAN</b> TV</div><div class="search"><input id="search" placeholder="Search channels..." aria-label="Search channels"><button onclick="filterCards()">⌕</button></div></header>
+<main>
+ <section class="hero"><h1>Watch Live TV</h1><span class="live">● LIVE CHANNELS</span></section>
+ <section class="player" id="player">
+  <div><div style="font-size:42px">📡</div><h2 id="playerTitle">Welcome to Khan TV</h2><p id="playerText">Choose a channel below. The Watch button opens the broadcaster's official live stream or verified channel.</p><a class="play" id="playerLink" href="https://live.arynews.tv/pk/" target="_blank" rel="noopener">Watch ARY News Live</a></div>
+ </section>
+ <nav class="tabs"><button class="tab active" data-filter="all">All</button><button class="tab" data-filter="Pakistan">Pakistan 🇵🇰</button><button class="tab" data-filter="International">International 🌍</button></nav>
+ <h3>Popular channels</h3>
+ <section class="grid" id="grid">
+  <article class="card" data-country="Pakistan" data-name="ARY News"><div class="thumb pk">ARY NEWS</div><div class="info"><strong>ARY News</strong><div class="meta">Pakistan · Urdu · News</div><a class="watch" href="https://live.arynews.tv/pk/" target="_blank" rel="noopener" data-title="ARY News">▶ Watch live</a></div></article>
+  <article class="card" data-country="Pakistan" data-name="Samaa TV"><div class="thumb pk">SAMAA</div><div class="info"><strong>Samaa TV</strong><div class="meta">Pakistan · Urdu · News</div><a class="watch" href="https://www.samaa.tv/live" target="_blank" rel="noopener" data-title="Samaa TV">▶ Watch live</a></div></article>
+  <article class="card" data-country="Pakistan" data-name="Geo News"><div class="thumb pk">GEO NEWS</div><div class="info"><strong>Geo News</strong><div class="meta">Pakistan · Urdu · News</div><a class="watch" href="https://www.youtube.com/@geonews" target="_blank" rel="noopener" data-title="Geo News">▶ Open official channel</a></div></article>
+  <article class="card" data-country="Pakistan" data-name="Dawn News"><div class="thumb pk">DAWN</div><div class="info"><strong>Dawn News</strong><div class="meta">Pakistan · Urdu · News</div><a class="watch" href="https://www.youtube.com/@DawnNewsEnglish" target="_blank" rel="noopener" data-title="Dawn News">▶ Open official channel</a></div></article>
+  <article class="card" data-country="International" data-name="Al Jazeera English"><div class="thumb int">AL JAZEERA</div><div class="info"><strong>Al Jazeera English</strong><div class="meta">International · English · News</div><a class="watch" href="https://www.aljazeera.com/live/" target="_blank" rel="noopener" data-title="Al Jazeera English">▶ Watch live</a></div></article>
+  <article class="card" data-country="International" data-name="Sky News"><div class="thumb int">SKY NEWS</div><div class="info"><strong>Sky News</strong><div class="meta">United Kingdom · English · News</div><a class="watch" href="https://news.sky.com/watch-live" target="_blank" rel="noopener" data-title="Sky News">▶ Watch live</a></div></article>
+  <article class="card" data-country="International" data-name="France 24"><div class="thumb int">FRANCE 24</div><div class="info"><strong>France 24</strong><div class="meta">France · English · News</div><a class="watch" href="https://www.france24.com/en/live" target="_blank" rel="noopener" data-title="France 24">▶ Watch live</a></div></article>
+  <article class="card" data-country="International" data-name="TRT World"><div class="thumb int">TRT WORLD</div><div class="info"><strong>TRT World</strong><div class="meta">Türkiye · English · News</div><a class="watch" href="https://www.trtworld.com/" target="_blank" rel="noopener" data-title="TRT World">▶ Official website</a></div></article>
+ </section><p class="empty" id="empty">No matching channels found.</p>
+</main>
+<footer>Khan TV is an independent channel directory. Streams are provided by broadcasters; availability and region restrictions may vary. We do not host or rebroadcast TV content.</footer>
+<script>
+const cards=[...document.querySelectorAll('.card')];let current='all';
+function filterCards(){const q=document.getElementById('search').value.toLowerCase();let count=0;cards.forEach(c=>{const ok=(current==='all'||c.dataset.country===current)&&c.dataset.name.toLowerCase().includes(q);c.style.display=ok?'':'none';if(ok)count++});document.getElementById('empty').style.display=count?'none':'block'}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');current=b.dataset.filter;filterCards()}));
+document.getElementById('search').addEventListener('input',filterCards);
+document.querySelectorAll('.watch').forEach(a=>a.addEventListener('click',()=>{document.getElementById('playerTitle').textContent=a.dataset.title;document.getElementById('playerText').textContent='Opening the official broadcaster stream in a new tab. If it does not play, check the broadcaster website or regional availability.';document.getElementById('playerLink').href=a.href;document.getElementById('playerLink').textContent='Open '+a.dataset.title+' stream';}));
+</script>
+</body></html>
